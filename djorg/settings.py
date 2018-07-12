@@ -34,7 +34,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 # Application definition
 
 INSTALLED_APPS = [
-    'bookmarks', 'notes', 'rest_framework', 'rest_framework.authtoken',
+    'bookmarks', 'notes', 'rest_framework', 'rest_framework.authtoken', 'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,6 +55,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000/',
+    '127.0.0.1:3000',
+    'https://rocky-garden-34376.herokuapp.com/',
+    # frontend url
+)
 
 ROOT_URLCONF = 'djorg.urls'
 

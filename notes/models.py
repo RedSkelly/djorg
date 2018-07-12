@@ -11,6 +11,10 @@ class Note(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     category = models.CharField(max_length=20)
 
+    def __str__(self):
+        """A string representation of the model."""
+        return self.title
+
 
 class PersonalNote(Note):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
